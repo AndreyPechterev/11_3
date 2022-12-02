@@ -104,6 +104,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Statement statement = connection.createStatement()){
             connection.setAutoCommit(false);
             statement.executeUpdate(truncateTable);
+            connection.commit();
         } catch (SQLException e) {
             System.out.println("Fail to truncate table Users");
             connection.rollback();
